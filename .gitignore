@@ -50,4 +50,4 @@ gen
 *.exe
 *.out
 *.app
-libs/
+/libs/SDL2/

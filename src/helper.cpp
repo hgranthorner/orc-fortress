@@ -4,7 +4,12 @@
 
 #include "helper.h"
 #include <iostream>
+#include <string>
 void helper::doThing() {
 
-    std::cout << "Hello worldio 2" << std::endl;
+    std::cout << "Hello "<< this->name <<" 2" << std::endl;
+}
+
+helper::helper(const std::string& name) {
+    this->name = name;
 }

@@ -1,8 +1,10 @@
-#include <iostream>
 #include "helper.h"
+#include "sdl_wrapper/wrapper.h"
 
 int main() {
-    std::unique_ptr<helper> x;
+    auto sdl = SDLWrapper();
+    sdl.InitSDL("Orc Fortress", 600, 600);
+    auto x = std::make_unique<helper>("worldio");
     x->doThing();
     return 0;
 }
