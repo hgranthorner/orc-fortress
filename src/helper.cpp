@@ -6,5 +6,5 @@
 #include <iostream>
 void helper::doThing() {
 
-    std::cout << "Hello worldio" << std::endl;
+    std::cout << "Hello worldio 2" << std::endl;
 }

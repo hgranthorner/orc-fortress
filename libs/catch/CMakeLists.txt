@@ -1,0 +1,1 @@
+add_library(Catch catch.hpp catch.cpp)

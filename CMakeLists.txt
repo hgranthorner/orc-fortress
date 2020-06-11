@@ -3,4 +3,8 @@ project(orc_fortress)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(orc_fortress src/main.cpp src/helper.cpp src/helper.h)
+add_subdirectory(src)
+add_subdirectory(libs/catch)
+
+enable_testing()
+add_subdirectory(tests)
