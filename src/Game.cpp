@@ -7,38 +7,38 @@
 #include "Consts.h"
 
 void Game::Run() {
-    _sdlWrapper.InitSDL(_gameName,
-                        Consts::WIDTH,
-                        Consts::HEIGHT);
+    sdl_wrapper_.InitSDL(game_name_,
+                         Consts::WIDTH,
+                         Consts::HEIGHT);
 
-    _orcs.emplace_back(Colors::RED);
-    _prey.emplace_back();
+    orcs_.emplace_back(Colors::RED);
+    prey_.emplace_back();
 
-    while (_isRunning) _runGameLoop();
+    while (is_running_) RunGameLoop();
 }
 
-void Game::_runGameLoop() {
-    _sdlWrapper.ClearScreen();
-    auto start = _sdlWrapper.GetTicks();
+void Game::RunGameLoop() {
+    sdl_wrapper_.ClearScreen();
+    auto start = sdl_wrapper_.GetTicks();
 
     SDL_Event event;
-    if (_sdlWrapper.PollEvent(event)) {
+    if (sdl_wrapper_.PollEvent(event)) {
         InputHandler::HandleInput(static_cast<SDL_EventType>(event.type),
                                   event.key.keysym.scancode,
-                                  _isRunning,
-                                  _prey);
+                                  is_running_,
+                                  prey_);
     }
 
-    for (auto &prey:_prey) {
-
+    for (auto &prey:prey_) {
+        sdl_wrapper_.DrawRectangle(prey);
     }
 
-    for (auto &orc:_orcs) {
-        _sdlWrapper.DrawRectangle(orc);
+    for (auto &orc:orcs_) {
+        sdl_wrapper_.DrawRectangle(orc);
     }
 
-    auto end = _sdlWrapper.GetTicks();
-    _sdlWrapper.DelayGame(start, end, Consts::FPS);
-    _sdlWrapper.RenderGame();
+    auto end = sdl_wrapper_.GetTicks();
+    sdl_wrapper_.DelayGame(start, end, Consts::FPS);
+    sdl_wrapper_.RenderGame();
 }
 

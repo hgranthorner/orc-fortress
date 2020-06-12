@@ -11,7 +11,7 @@ class Orc : public Rectangle {
 public:
     explicit Orc(Color color);
 private:
-    bool _isHungry = true;
+    bool is_hungry_ = true;
 };
 
 

@@ -1,7 +1,7 @@
 add_executable(Test
         tests.cpp
         fixtures/InputHandlerTest.cpp
-        fixtures/InputHandlerTest.h)
+        fixtures/InputHandlerTest.h fixtures/SDLGridTest.cpp fixtures/SDLGridTest.h)
 target_include_directories(Test
         PUBLIC ../libs/googletest/googletest
         PUBLIC ../src)

@@ -7,9 +7,28 @@
 #include <models/Prey.h>
 #include <InputHandler.h>
 #include "fixtures/InputHandlerTest.h"
+#include "fixtures/SDLGridTest.h"
 
-TEST(TestGoogleTest, ConfirmSetup) {
+TEST(GoogleTest, ConfirmSetup) {
     ASSERT_EQ(1, 1);
+}
+
+TEST_F(SDLGridTest, ResetWorks) {
+    grid_.Reset(rand_height_, rand_width_);
+    ASSERT_EQ(grid_.size(), rand_height_);
+    ASSERT_EQ(grid_.at(0).size(), rand_width_);
+}
+
+TEST_F(SDLGridTest, ResetAssignsCorrectCoordinates) {
+    grid_.Reset(rand_height_, rand_width_);
+    for (int y = 0; y < grid_.size(); ++y) {
+        auto row = grid_.at(y);
+        for (int x = 0; x < row.size(); ++x) {
+            auto rect = row.at(x);
+            ASSERT_EQ(rect.x, x);
+            ASSERT_EQ(rect.y, y);
+        }
+    }
 }
 
 TEST_F(InputHandlerTest, CreatesNewPreyOnRPress) {
@@ -21,9 +40,9 @@ TEST_F(InputHandlerTest, CreatesNewPreyOnRPress) {
     ASSERT_FALSE(prey_.empty());
 }
 
-TEST_F(InputHandlerTest, StopsRunningOnQPress) {
+TEST_F(InputHandlerTest, StopsRunningOnQuit) {
     InputHandler::HandleInput(
-            SDL_EventType::SDL_KEYDOWN,
+            SDL_EventType::SDL_QUIT,
             SDL_SCANCODE_Q,
             running_,
             prey_);

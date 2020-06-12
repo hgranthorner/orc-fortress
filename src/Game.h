@@ -16,15 +16,14 @@ public:
     void Run();
 
 private:
-    SDLWrapper _sdlWrapper;
-    bool _isRunning = true;
-    std::string _gameName = "Orc Fortress";
+    SDLWrapper sdl_wrapper_;
+    bool is_running_ = true;
+    std::string game_name_ = "Orc Fortress";
 
-    std::vector<Orc> _orcs;
-    std::vector<Prey> _prey;
+    std::vector<Orc> orcs_;
+    std::vector<Prey> prey_;
 
-    void _runGameLoop();
-
+    void RunGameLoop();
 };
 
 

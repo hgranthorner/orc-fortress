@@ -21,13 +21,18 @@ namespace Colors {
     const auto RED = Color(255, 0, 0, 255);
     const auto GREEN = Color(0, 255, 0, 255);
     const auto BLUE = Color(0, 0, 255, 255);
+    const auto BLACK = Color(0, 0, 0, 255);
 }
 
 struct Rectangle {
+    Rectangle();
     Rectangle(const Color &color, int x, int y, int w, int h);
 
     Color color;
-    SDL_Rect shape;
+    int x;
+    int y;
+    int w;
+    int h;
 };
 
 

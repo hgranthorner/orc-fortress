@@ -7,6 +7,7 @@
 
 #include "SDLDeleter.h"
 #include "Rectangle.h"
+#include "SDLGrid.h"
 #include <string>
 
 class SDLWrapper {
@@ -26,8 +27,9 @@ public:
     int PollEvent(SDL_Event &event);
 
 private:
-    std::unique_ptr<SDL_Window, SDLDeleter> _window;
-    std::unique_ptr<SDL_Renderer, SDLDeleter> _renderer;
+    std::unique_ptr<SDL_Window, SDLDeleter> window_;
+    std::unique_ptr<SDL_Renderer, SDLDeleter> renderer_;
+    SDLGrid grid_;
 };
 
 

@@ -5,11 +5,18 @@
 #include "SDLWrapper.h"
 #include <stdexcept>
 #include <algorithm>
+#include <Consts.h>
 
 void SDLWrapper::InitSDL(const std::string &name, int width, int height) {
+    auto cell_size = Consts::CELL_SIZE;
+    if (height % cell_size != 0)
+        throw std::invalid_argument("Height needs to be a multiple of " + std::to_string(cell_size));
+    if (width % cell_size != 0)
+        throw std::invalid_argument("Width needs to be a multiple of " + std::to_string(cell_size));
+
     if (SDL_Init(SDL_INIT_VIDEO) != 0) throw std::runtime_error("Failed to initialize SDL");
 
-    this->_window = std::unique_ptr<SDL_Window, SDLDeleter>(
+    this->window_ = std::unique_ptr<SDL_Window, SDLDeleter>(
             SDL_CreateWindow(
                     name.c_str(),
                     SDL_WINDOWPOS_CENTERED,
@@ -18,21 +25,24 @@ void SDLWrapper::InitSDL(const std::string &name, int width, int height) {
                     height,
                     SDL_WINDOW_OPENGL),
             SDLDeleter());
-    if (!this->_window) throw std::runtime_error("Failed to create window");
+    if (!this->window_) throw std::runtime_error("Failed to create window");
 
-    this->_renderer = std::unique_ptr<SDL_Renderer, SDLDeleter>(
+    this->renderer_ = std::unique_ptr<SDL_Renderer, SDLDeleter>(
             SDL_CreateRenderer(
-                    this->_window.get(),
+                    this->window_.get(),
                     -1,
                     SDL_RENDERER_ACCELERATED
                     | SDL_RENDERER_PRESENTVSYNC),
             SDLDeleter());
-    if (!this->_renderer) throw std::runtime_error("Failed to create renderer");
+    if (!this->renderer_) throw std::runtime_error("Failed to create renderer");
+    const int widthInCells = width / cell_size;
+    const int heightInCells = height / cell_size;
+    this->grid_.Reset(widthInCells, heightInCells);
 }
 
 void SDLWrapper::ClearScreen() {
-    SDL_SetRenderDrawColor(this->_renderer.get(), 0, 0, 0, 255);
-    SDL_RenderClear(this->_renderer.get());
+    SDL_SetRenderDrawColor(this->renderer_.get(), 0, 0, 0, 255);
+    SDL_RenderClear(this->renderer_.get());
 }
 
 int SDLWrapper::GetTicks() {
@@ -44,7 +54,7 @@ void SDLWrapper::DelayGame(int start, int end, int fps) {
 }
 
 void SDLWrapper::RenderGame() {
-    SDL_RenderPresent(this->_renderer.get());
+    SDL_RenderPresent(this->renderer_.get());
 }
 
 int SDLWrapper::PollEvent(SDL_Event &event) {
@@ -52,12 +62,13 @@ int SDLWrapper::PollEvent(SDL_Event &event) {
 }
 
 void SDLWrapper::DrawRectangle(Rectangle &rect) {
-    SDL_SetRenderDrawColor(this->_renderer.get(),
+    auto sdl_rect = SDL_Rect{rect.x, rect.y, rect.h, rect.w};
+    SDL_SetRenderDrawColor(this->renderer_.get(),
                            rect.color.r,
                            rect.color.g,
                            rect.color.b,
                            rect.color.a);
-    SDL_RenderFillRect(this->_renderer.get(),
-                       &rect.shape);
+    SDL_RenderFillRect(this->renderer_.get(),
+                       &sdl_rect);
 }
 
