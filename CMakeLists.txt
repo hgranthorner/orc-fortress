@@ -4,7 +4,7 @@ project(orc_fortress)
 set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(libs/SDL2)
-add_subdirectory(libs/gtest)
+add_subdirectory(libs/googletest)
 add_subdirectory(src/consts)
 add_subdirectory(src/sdl_wrapper)
 add_subdirectory(src/models)
