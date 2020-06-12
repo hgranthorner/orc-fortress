@@ -5,9 +5,13 @@ int main() {
     auto sdl = SDLWrapper();
     sdl.InitSDL("Orc Fortress", 600, 600);
 
-    auto eh = InputHandler();
-    while (*eh.running) {
-        sdl.HandleUserInput(std::make_shared<InputHandler>(eh), 60);
+    auto FPS = 60;
+    int counter = 0;
+    auto running = true;
+    auto inputHandler = InputHandler(running);
+    while (inputHandler.isRunning() && counter < 10) {
+        sdl.HandleUserInput(inputHandler, FPS);
+        counter++;
     }
 
     return 0;

@@ -10,11 +10,13 @@
 
 class InputHandler : public VirtualEventHandler {
 public:
-    explicit InputHandler();
+    explicit InputHandler(bool &running);
 
+    bool isRunning();
     void HandleInput(SDL_Event event) override;
 
-    std::shared_ptr<bool> running = std::make_shared<bool>(true);
+private:
+    bool &_running;
 };
 
 

@@ -34,12 +34,12 @@ void SDLWrapper::InitSDL(const std::string &name, int width, int height) {
 
 SDLWrapper::SDLWrapper() = default;
 
-void SDLWrapper::HandleUserInput(const std::shared_ptr<VirtualEventHandler> &handler, int render_timer) const {
+void SDLWrapper::HandleUserInput(VirtualEventHandler &handler, int render_timer) const {
     SDL_Event event;
     SDL_SetRenderDrawColor(this->Renderer.get(), 0, 0, 0, 255);
     SDL_RenderClear(this->Renderer.get());
     const int start_frame_time = SDL_GetTicks();
-    if (SDL_PollEvent(&event)) handler->HandleInput(event);
+    if (SDL_PollEvent(&event)) handler.HandleInput(event);
     const int end_frame_time = SDL_GetTicks();
     SDL_Delay(std::max(10, render_timer - (end_frame_time - start_frame_time)));
     SDL_RenderPresent(this->Renderer.get());

@@ -15,7 +15,7 @@ public:
 
     void InitSDL(const std::string &name, int width, int height);
 
-    void HandleUserInput(const std::shared_ptr<VirtualEventHandler> &handler, int render_timer) const;
+    void HandleUserInput(VirtualEventHandler &handler, int render_timer) const;
 
 private:
     std::unique_ptr<SDL_Window, SDLDeleter> Window;
