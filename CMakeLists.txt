@@ -5,8 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(src)
 add_subdirectory(src/sdl_wrapper)
-add_subdirectory(libs/catch)
 add_subdirectory(libs/SDL2)
+add_subdirectory(libs/catch)
 
 enable_testing()
 add_subdirectory(tests)

@@ -1,10 +1,14 @@
-#include "helper.h"
-#include "wrapper.h"
+#include "SDLWrapper.h"
+#include "InputHandler.h"
 
 int main() {
     auto sdl = SDLWrapper();
     sdl.InitSDL("Orc Fortress", 600, 600);
-    auto x = std::make_unique<helper>("worldio");
-    x->doThing();
+
+    auto eh = InputHandler();
+    while (*eh.running) {
+        sdl.HandleUserInput(std::make_shared<InputHandler>(eh), 60);
+    }
+
     return 0;
 }
