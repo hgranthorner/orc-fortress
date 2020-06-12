@@ -4,9 +4,8 @@
 
 #include "InputHandler.h"
 
-void InputHandler::HandleInput(SDL_Event event, bool &running, std::vector<Prey> &prey) {
-    if (event.type == SDL_KEYDOWN) {
-        SDL_Scancode code = event.key.keysym.scancode;
+void InputHandler::HandleInput(SDL_EventType type, SDL_Scancode code, bool &running, std::vector<Prey> &prey) {
+    if (type == SDL_KEYDOWN) {
         if (code == SDL_SCANCODE_Q) {
             running = false;
         }

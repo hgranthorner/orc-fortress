@@ -17,7 +17,6 @@ public:
 
 private:
     SDLWrapper _sdlWrapper;
-    InputHandler _inputHandler;
     bool _isRunning = true;
     std::string _gameName = "Orc Fortress";
 

@@ -11,7 +11,7 @@
 
 class InputHandler {
 public:
-    void HandleInput(SDL_Event event, bool &running, std::vector<Prey> &prey);
+    static void HandleInput(SDL_EventType type, SDL_Scancode code, bool &running, std::vector<Prey> &prey);
 };
 
 

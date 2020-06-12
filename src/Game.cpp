@@ -23,7 +23,14 @@ void Game::_runGameLoop() {
 
     SDL_Event event;
     if (_sdlWrapper.PollEvent(event)) {
-        _inputHandler.HandleInput(event, _isRunning, _prey);
+        InputHandler::HandleInput(static_cast<SDL_EventType>(event.type),
+                                  event.key.keysym.scancode,
+                                  _isRunning,
+                                  _prey);
+    }
+
+    for (auto &prey:_prey) {
+
     }
 
     for (auto &orc:_orcs) {
