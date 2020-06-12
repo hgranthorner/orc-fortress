@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libCatch.a  CMakeFiles/Catch.dir/catch.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libCatch.a
