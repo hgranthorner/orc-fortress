@@ -5,7 +5,6 @@
 #ifndef ORC_FORTRESS_SDLWRAPPER_H
 #define ORC_FORTRESS_SDLWRAPPER_H
 
-#include "VirtualEventHandler.h"
 #include "SDLDeleter.h"
 #include "Rectangle.h"
 #include <string>

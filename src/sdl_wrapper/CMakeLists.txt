@@ -1,6 +1,5 @@
 add_library(SDL_Wrapper
         SDLWrapper.cpp SDLWrapper.h
-        VirtualEventHandler.cpp VirtualEventHandler.h
         SDLDeleter.h SDLDeleter.cpp
         Rectangle.cpp Rectangle.h)
 target_include_directories(SDL_Wrapper PUBLIC ../../libs/SDL2)

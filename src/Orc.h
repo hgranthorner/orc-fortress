@@ -12,6 +12,8 @@ public:
     explicit Orc(Color color);
 
     Rectangle Rect;
+private:
+    bool _isHungry = true;
 };
 
 

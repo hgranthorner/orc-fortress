@@ -6,11 +6,11 @@
 #define ORC_FORTRESS_INPUTHANDLER_H
 
 #include "SDLWrapper.h"
-#include "VirtualEventHandler.h"
+#include <vector>
 
-class InputHandler : public VirtualEventHandler {
+class InputHandler {
 public:
-    void HandleInput(SDL_Event event, bool &running) override;
+    void HandleInput(SDL_Event event, bool &running);
 };
 
 
