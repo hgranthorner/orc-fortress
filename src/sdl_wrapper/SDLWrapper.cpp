@@ -35,9 +35,10 @@ void SDLWrapper::InitSDL(const std::string &name, int width, int height) {
                     | SDL_RENDERER_PRESENTVSYNC),
             SDLDeleter());
     if (!this->renderer_) throw std::runtime_error("Failed to create renderer");
-    const int widthInCells = width / cell_size;
-    const int heightInCells = height / cell_size;
-    this->grid_.Reset(widthInCells, heightInCells);
+    const int width_in_cells = width / cell_size;
+    const int height_in_cells = height / cell_size;
+    this->grid_ = SDLGrid(width_in_cells, height_in_cells);
+    this->grid_.Reset();
 }
 
 void SDLWrapper::ClearScreen() {

@@ -10,10 +10,11 @@
 
 class SDLGridTest : public testing::Test {
 protected:
-    void SetUp() override;
-    SDLGrid grid_;
+    SDLGrid grid_ = SDLGrid(0,0);
     int rand_height_;
     int rand_width_;
+
+    void SetUp() override;
 };
 
 

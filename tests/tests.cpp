@@ -14,13 +14,13 @@ TEST(GoogleTest, ConfirmSetup) {
 }
 
 TEST_F(SDLGridTest, ResetWorks) {
-    grid_.Reset(rand_height_, rand_width_);
+    grid_.Reset();
     ASSERT_EQ(grid_.size(), rand_height_);
     ASSERT_EQ(grid_.at(0).size(), rand_width_);
 }
 
 TEST_F(SDLGridTest, ResetAssignsCorrectCoordinates) {
-    grid_.Reset(rand_height_, rand_width_);
+    grid_.Reset();
     for (int y = 0; y < grid_.size(); ++y) {
         auto row = grid_.at(y);
         for (int x = 0; x < row.size(); ++x) {

@@ -4,8 +4,8 @@
 
 #include "SDLGrid.h"
 
-void SDLGrid::Reset(int height, int width) {
-    this->assign(height, std::vector<Rectangle>(width, Rectangle()));
+void SDLGrid::Reset() {
+    this->assign(height_, std::vector<Rectangle>(width_, Rectangle()));
     for (int y = 0; y < this->size(); ++y) {
         auto row = &this->at(y);
         for (int x = 0; x < row->size(); ++x) {
@@ -15,3 +15,6 @@ void SDLGrid::Reset(int height, int width) {
         }
     }
 }
+
+SDLGrid::SDLGrid(int width, int height) : width_(width),
+                                          height_(height) {}

@@ -11,7 +11,13 @@
 
 class SDLGrid : public std::vector<std::vector<Rectangle>> {
 public:
-    void Reset(int height, int width);
+    SDLGrid(int width, int height);
+
+    void Reset();
+
+private:
+    int width_;
+    int height_;
 };
 
 

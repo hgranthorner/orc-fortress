@@ -8,7 +8,8 @@
 void SDLGridTest::SetUp() {
     Test::SetUp();
 
-    grid_ = SDLGrid();
     rand_height_ = rand() % 100;
     rand_width_ = rand() % 100;
+    grid_ = SDLGrid(rand_width_, rand_height_);
 }
+
