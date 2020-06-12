@@ -8,20 +8,24 @@
 
 #include <SDL.h>
 
-struct Position {
-    int x;
-    int y;
-};
-
 struct Color {
+    Color(int r, int g, int b, int a);
+
     int r;
     int g;
     int b;
     int a;
 };
 
+namespace Colors {
+    const auto RED = Color(255, 0, 0, 255);
+    const auto GREEN = Color(0, 255, 0, 255);
+    const auto BLUE = Color(0, 0, 255, 255);
+}
+
 struct Rectangle {
-    Position position;
+    Rectangle(const Color &color, int x, int y, int w, int h);
+
     Color color;
     SDL_Rect shape;
 };

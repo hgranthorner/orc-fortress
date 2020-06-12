@@ -12,6 +12,6 @@ Milestones
 ===============
 * 0.1
 + create window
-- create "orcs" (rectangles)
++ create "orcs" (rectangles)
 - randomly generate targets
 - have orcs move towards targets

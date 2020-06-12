@@ -1,4 +1,7 @@
-add_library(Orc-Lib InputHandler.cpp InputHandler.h Orc.cpp Orc.h Rectangle.cpp Rectangle.h)
+add_library(Orc-Lib
+        InputHandler.cpp InputHandler.h
+        Orc.cpp Orc.h
+        Game.cpp Game.h)
 add_executable(Orc-Fortress main.cpp)
 target_include_directories(Orc-Lib PUBLIC ./sdl_wrapper)
 target_link_libraries(Orc-Lib SDL_Wrapper)

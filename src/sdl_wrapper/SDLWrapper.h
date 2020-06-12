@@ -7,19 +7,28 @@
 
 #include "VirtualEventHandler.h"
 #include "SDLDeleter.h"
+#include "Rectangle.h"
 #include <string>
 
 class SDLWrapper {
 public:
-    SDLWrapper();
-
     void InitSDL(const std::string &name, int width, int height);
 
-    void HandleUserInput(VirtualEventHandler &handler, int render_timer) const;
+    void ClearScreen();
+
+    int GetTicks();
+
+    void DelayGame(int start, int end, int fps);
+
+    void RenderGame();
+
+    void DrawRectangle(Rectangle rect);
+
+    int PollEvent(SDL_Event &event);
 
 private:
-    std::unique_ptr<SDL_Window, SDLDeleter> Window;
-    std::unique_ptr<SDL_Renderer, SDLDeleter> Renderer;
+    std::unique_ptr<SDL_Window, SDLDeleter> _window;
+    std::unique_ptr<SDL_Renderer, SDLDeleter> _renderer;
 };
 
 

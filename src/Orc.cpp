@@ -4,4 +4,4 @@
 
 #include "Orc.h"
 
-Orc::Orc(const Rectangle &rect) : rect(rect) {}
+Orc::Orc(const Color color) : Rect(color, 300, 300, 50, 50) {}

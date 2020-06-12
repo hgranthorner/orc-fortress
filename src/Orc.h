@@ -9,9 +9,9 @@
 
 class Orc {
 public:
-    Orc(const Rectangle &rect);
+    explicit Orc(Color color);
 
-    Rectangle rect;
+    Rectangle Rect;
 };
 
 

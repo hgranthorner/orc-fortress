@@ -4,19 +4,10 @@
 
 #include "InputHandler.h"
 
-
-
-void InputHandler::HandleInput(SDL_Event event) {
+void InputHandler::HandleInput(SDL_Event event, bool &running) {
     if (event.type == SDL_KEYDOWN) {
         if (event.key.keysym.scancode == SDL_SCANCODE_Q) {
-            this->_running = false;
+            running = false;
         }
     }
-}
-
-InputHandler::InputHandler(bool &running) : _running(running) {
-}
-
-bool InputHandler::isRunning() {
-    return this->_running;
 }

@@ -9,7 +9,7 @@
 
 class VirtualEventHandler {
 public:
-    virtual void HandleInput(SDL_Event event) = 0;
+    virtual void HandleInput(SDL_Event event, bool &running) = 0;
 };
 
 #endif //ORC_FORTRESS_VIRTUALEVENTHANDLER_H

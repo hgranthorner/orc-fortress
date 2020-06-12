@@ -10,13 +10,7 @@
 
 class InputHandler : public VirtualEventHandler {
 public:
-    explicit InputHandler(bool &running);
-
-    bool isRunning();
-    void HandleInput(SDL_Event event) override;
-
-private:
-    bool &_running;
+    void HandleInput(SDL_Event event, bool &running) override;
 };
 
 
