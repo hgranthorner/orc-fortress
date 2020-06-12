@@ -4,10 +4,14 @@
 
 #include "InputHandler.h"
 
-void InputHandler::HandleInput(SDL_Event event, bool &running) {
+void InputHandler::HandleInput(SDL_Event event, bool &running, std::vector<Prey> &prey) {
     if (event.type == SDL_KEYDOWN) {
-        if (event.key.keysym.scancode == SDL_SCANCODE_Q) {
+        SDL_Scancode code = event.key.keysym.scancode;
+        if (code == SDL_SCANCODE_Q) {
             running = false;
+        }
+        if (code == SDL_SCANCODE_R) {
+            prey.emplace_back();
         }
     }
 }

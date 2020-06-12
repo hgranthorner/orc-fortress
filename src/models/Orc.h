@@ -7,11 +7,9 @@
 
 #include "Rectangle.h"
 
-class Orc {
+class Orc : public Rectangle {
 public:
     explicit Orc(Color color);
-
-    Rectangle Rect;
 private:
     bool _isHungry = true;
 };

@@ -6,9 +6,8 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
-TEST_CASE("Base Test", "1 = 1") {
+TEST_CASE("Base Test", "True") {
     REQUIRE(true);
-    REQUIRE(false);
 }
 
 

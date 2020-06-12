@@ -5,7 +5,7 @@
 #ifndef ORC_FORTRESS_SDLDELETER_H
 #define ORC_FORTRESS_SDLDELETER_H
 
-#include "SDL.h"
+#include <SDL.h>
 
 struct SDLDeleter {
     void operator()(SDL_Window *p) const { SDL_DestroyWindow(p); }

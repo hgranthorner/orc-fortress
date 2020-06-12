@@ -7,10 +7,11 @@
 
 #include "SDLWrapper.h"
 #include <vector>
+#include <Prey.h>
 
 class InputHandler {
 public:
-    void HandleInput(SDL_Event event, bool &running);
+    void HandleInput(SDL_Event event, bool &running, std::vector<Prey> &prey);
 };
 
 

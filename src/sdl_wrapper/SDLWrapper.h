@@ -21,7 +21,7 @@ public:
 
     void RenderGame();
 
-    void DrawRectangle(Rectangle rect);
+    void DrawRectangle(Rectangle &rect);
 
     int PollEvent(SDL_Event &event);
 

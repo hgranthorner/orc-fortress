@@ -51,7 +51,7 @@ int SDLWrapper::PollEvent(SDL_Event &event) {
     return SDL_PollEvent(&event);
 }
 
-void SDLWrapper::DrawRectangle(Rectangle rect) {
+void SDLWrapper::DrawRectangle(Rectangle &rect) {
     SDL_SetRenderDrawColor(this->_renderer.get(),
                            rect.color.r,
                            rect.color.g,

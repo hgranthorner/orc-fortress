@@ -7,8 +7,9 @@
 
 
 #include <vector>
+#include <Prey.h>
+#include <Orc.h>
 #include "InputHandler.h"
-#include "Orc.h"
 
 class Game {
 public:
@@ -19,12 +20,12 @@ private:
     InputHandler _inputHandler;
     bool _isRunning = true;
     std::string _gameName = "Orc Fortress";
-    int _gameWidth = 600;
-    int _gameHeight = 600;
-    int _fps = 60;
+
     std::vector<Orc> _orcs;
+    std::vector<Prey> _prey;
 
     void _runGameLoop();
+
 };
 
 
