@@ -1,5 +1,5 @@
 #include "helper.h"
-#include "sdl_wrapper/wrapper.h"
+#include "wrapper.h"
 
 int main() {
     auto sdl = SDLWrapper();
