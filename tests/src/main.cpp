@@ -3,11 +3,17 @@
 //
 
 #include <iostream>
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
+#include <gtest/gtest.h>
+//#define CATCH_CONFIG_MAIN
+//#include "catch.hpp"
 
-TEST_CASE("Base Test", "True") {
-    REQUIRE(true);
+int main() {
+    testing::InitGoogleTest();
+    RUN_ALL_TESTS();
 }
 
+
+TEST(Test, Test) {
+    ASSERT_EQ(1, 1);
+}
 

@@ -1,10 +1,10 @@
 add_executable(Test src/main.cpp)
 target_include_directories(Test
-        PUBLIC ../libs/catch
+        PUBLIC ../libs/gtest/googletest
         PUBLIC ../src)
 target_link_libraries(Test
         Orc-Lib
-        Catch)
+        gtest)
 
 
 #add_test(NAME MyTests COMMAND FirstTest)
