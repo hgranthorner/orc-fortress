@@ -62,8 +62,10 @@ int SDLWrapper::PollEvent(SDL_Event &event) {
     return SDL_PollEvent(&event);
 }
 
-void SDLWrapper::DrawRectangle(Rectangle &rect) {
-    auto sdl_rect = SDL_Rect{rect.x, rect.y, rect.h, rect.w};
+void SDLWrapper:: DrawRectangle(Rectangle &rect) {
+    auto width = rect.w * Consts::CELL_SIZE;
+    auto height = rect.h * Consts::CELL_SIZE;
+    auto sdl_rect = SDL_Rect{rect.x * width, rect.y * height, height, width};
     SDL_SetRenderDrawColor(this->renderer_.get(),
                            rect.color.r,
                            rect.color.g,

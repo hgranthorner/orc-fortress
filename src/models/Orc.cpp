@@ -6,7 +6,7 @@
 #include "Consts.h"
 
 Orc::Orc(const Color color) : Rectangle(color,
-                                        300,
-                                        300,
+                                        30,
+                                        30,
                                         Consts::ORC_LENGTH,
                                         Consts::ORC_LENGTH) {}

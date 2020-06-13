@@ -10,7 +10,7 @@
 
 class SDLGridTest : public testing::Test {
 protected:
-    SDLGrid grid_ = SDLGrid(0,0);
+    SDLGrid grid_;
     int rand_height_;
     int rand_width_;
 

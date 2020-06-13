@@ -6,7 +6,7 @@
 #include "Prey.h"
 
 Prey::Prey() : Rectangle(Colors::GREEN,
-                         rand() % Consts::WIDTH,
-                         rand() % Consts::HEIGHT,
+                         rand() % (Consts::WIDTH / Consts::CELL_SIZE),
+                         rand() % (Consts::HEIGHT / Consts::CELL_SIZE),
                          25,
                          25) {}

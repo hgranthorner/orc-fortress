@@ -15,6 +15,8 @@ struct Color {
     int g;
     int b;
     int a;
+
+    bool operator==(Color color2) const;
 };
 
 namespace Colors {

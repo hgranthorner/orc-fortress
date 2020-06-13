@@ -6,6 +6,7 @@
 #include <gtest/gtest.h>
 #include <models/Prey.h>
 #include <InputHandler.h>
+#include <models/UUID.h>
 #include "fixtures/InputHandlerTest.h"
 #include "fixtures/SDLGridTest.h"
 
@@ -31,6 +32,13 @@ TEST_F(SDLGridTest, ResetAssignsCorrectCoordinates) {
     }
 }
 
+TEST_F(SDLGridTest, PushWorks) {
+    grid_.Reset();
+    auto rect = Rectangle(Colors::BLUE,1,1,1,1);
+    grid_.Push(rect);
+    ASSERT_EQ(grid_.at(1).at(1).color, Colors::BLUE);
+}
+
 TEST_F(InputHandlerTest, CreatesNewPreyOnRPress) {
     InputHandler::HandleInput(
             SDL_EventType::SDL_KEYDOWN,
@@ -47,4 +55,9 @@ TEST_F(InputHandlerTest, StopsRunningOnQuit) {
             running_,
             prey_);
     ASSERT_FALSE(running_);
+}
+
+TEST(UUIDTest, CanConstruct) {
+    auto uuid = UUID();
+    ASSERT_TRUE(uuid.GetValue().size() > 0);
 }

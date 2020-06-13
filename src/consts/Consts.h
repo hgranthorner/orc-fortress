@@ -10,7 +10,7 @@ struct Consts {
     static const int WIDTH = 600;
     static const int HEIGHT = 600;
     static const int FPS = 60;
-    static const int ORC_LENGTH = 50;
+    static const int ORC_LENGTH = 1;
     static const int CELL_SIZE = 10;
 };
 

@@ -8,7 +8,8 @@ target_include_directories(Test
 target_link_libraries(Test
         Orc-Lib
         gtest
-        gtest_main)
+        gtest_main
+        Models)
 
 
 #add_test(NAME MyTests COMMAND FirstTest)

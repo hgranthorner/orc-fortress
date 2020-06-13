@@ -18,3 +18,13 @@ void SDLGrid::Reset() {
 
 SDLGrid::SDLGrid(int width, int height) : width_(width),
                                           height_(height) {}
+
+SDLGrid::SDLGrid() : width_(0), height_(0) {}
+
+void SDLGrid::Push(Rectangle &rect) {
+    this->at(rect.y).at(rect.x) = rect;
+}
+
+void SDLGrid::Update(Rectangle &rect) {
+
+}
