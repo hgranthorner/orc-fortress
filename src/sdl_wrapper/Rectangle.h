@@ -7,6 +7,8 @@
 
 
 #include <SDL.h>
+#include <Position.h>
+#include <ID.h>
 
 struct Color {
     Color(int r, int g, int b, int a);
@@ -26,13 +28,11 @@ namespace Colors {
     const auto BLACK = Color(0, 0, 0, 255);
 }
 
-struct Rectangle {
+struct Rectangle : public Position {
     Rectangle();
     Rectangle(const Color &color, int x, int y, int w, int h);
-
+    ID id;
     Color color;
-    int x;
-    int y;
     int w;
     int h;
 };
