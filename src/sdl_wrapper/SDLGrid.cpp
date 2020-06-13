@@ -32,12 +32,13 @@ Rectangle SDLGrid::Get(int x, int y) {
     return data_.at(y).at(x);
 }
 
-void SDLGrid::Upsert(Rectangle &rect) {
-    if (map_.CheckIfExists(rect.id)) {
+void SDLGrid::Upsert(Rectangle rect) {
+    auto exists = map_.CheckIfExists(rect.id);
+    if (exists) {
         auto pos = map_.Get(rect.id);
         data_[pos.y][pos.x] = Rectangle();
     }
-    map_.Add(rect.id, rect);
+    map_.Upsert(rect.id, rect);
     data_.at(rect.y).at(rect.x) = rect;
 }
 

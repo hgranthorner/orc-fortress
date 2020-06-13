@@ -11,3 +11,11 @@ long ID::GetValue() const {
 ID::ID() : value_(next_value_) {
     next_value_ = next_value_ + 1;
 }
+
+bool ID::operator==(const ID &rhs) const {
+    return value_ == rhs.value_;
+}
+
+bool ID::operator!=(const ID &rhs) const {
+    return !(rhs == *this);
+}

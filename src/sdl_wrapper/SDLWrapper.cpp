@@ -31,10 +31,10 @@ void SDLWrapper::InitSDL(const std::string &name, int width, int height) {
             SDL_CreateRenderer(
                     this->window_.get(),
                     -1,
-                    SDL_RENDERER_ACCELERATED
-                    | SDL_RENDERER_PRESENTVSYNC),
+                    SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC),
             SDLDeleter());
     if (!this->renderer_) throw std::runtime_error("Failed to create renderer");
+
     const int width_in_cells = width / cell_size;
     const int height_in_cells = height / cell_size;
     this->grid_ = SDLGrid(width_in_cells, height_in_cells);
@@ -62,10 +62,11 @@ int SDLWrapper::PollEvent(SDL_Event &event) {
     return SDL_PollEvent(&event);
 }
 
-void SDLWrapper:: DrawRectangle(Rectangle &rect) {
+void SDLWrapper::DrawRectangle(Rectangle &rect) {
+    grid_.Upsert(rect);
     auto width = rect.w * Consts::CELL_SIZE;
     auto height = rect.h * Consts::CELL_SIZE;
-    auto sdl_rect = SDL_Rect{rect.x * width, rect.y * height, height, width};
+    auto sdl_rect = SDL_Rect{rect.x * width, rect.y * height, width, height};
     SDL_SetRenderDrawColor(this->renderer_.get(),
                            rect.color.r,
                            rect.color.g,

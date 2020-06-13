@@ -8,5 +8,5 @@
 Prey::Prey() : Rectangle(Colors::GREEN,
                          rand() % (Consts::WIDTH / Consts::CELL_SIZE),
                          rand() % (Consts::HEIGHT / Consts::CELL_SIZE),
-                         25,
-                         25) {}
+                         1,
+                         1) {}

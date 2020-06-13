@@ -10,6 +10,10 @@ class ID {
 public:
     ID();
 
+    bool operator==(const ID &rhs) const;
+
+    bool operator!=(const ID &rhs) const;
+
     [[nodiscard]] long GetValue() const;
 private:
     long value_;

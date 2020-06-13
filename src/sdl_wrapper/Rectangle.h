@@ -30,7 +30,7 @@ namespace Colors {
 
 struct Rectangle : public Position {
     Rectangle();
-    Rectangle(const Color &color, int x, int y, int w, int h);
+    Rectangle(const Color &color, int x, int y, int w = 1, int h = 1);
     ID id;
     Color color;
     int w;

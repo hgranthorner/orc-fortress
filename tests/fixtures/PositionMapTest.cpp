@@ -14,7 +14,7 @@ void PositionMapTest::SetUp() {
 
 TEST_F(PositionMapTest, CanAddAndGet) {
     auto pos1 = Position(rand(), rand());
-    map_.Add(id_, pos1);
+    map_.Upsert(id_, pos1);
     ASSERT_TRUE(map_.CheckIfExists(id_));
     auto pos2 = map_.Get(id_);
     ASSERT_EQ(pos1, pos2);
@@ -33,14 +33,14 @@ TEST_F(PositionMapTest, CanCheckIfValueExists) {
     ASSERT_TRUE(map_.CheckIfExists(id_));
     auto id2 = ID();
     ASSERT_FALSE(map_.CheckIfExists(id2));
-    map_.Add(id2, Position(rand(), rand()));
+    map_.Upsert(id2, Position(rand(), rand()));
     ASSERT_TRUE(map_.CheckIfExists(id2));
 }
 
 TEST_F(PositionMapTest, CanRemoveValue) {
     ASSERT_FALSE(map_.CheckIfExists(id_));
     auto pos = Position();
-    map_.Add(id_, pos);
+    map_.Upsert(id_, pos);
     ASSERT_TRUE(map_.CheckIfExists(id_));
     map_.Remove(id_);
     ASSERT_FALSE(map_.CheckIfExists(id_));
@@ -51,10 +51,10 @@ TEST_F(PositionMapTest, CanUpdateValue) {
     auto rand1 = rand();
     auto rand2 = rand();
     auto pos1 = Position(rand1, rand2);
-    map_.Add(id_, pos1);
+    map_.Upsert(id_, pos1);
     ASSERT_EQ(pos1, map_.Get(id_));
     auto pos2 = Position(rand1 + 1, rand2 + 1);
-    map_.Update(id_, pos2);
+    map_.Upsert(id_, pos2);
     ASSERT_NE(pos1, map_.Get(id_));
     ASSERT_EQ(pos2, map_.Get(id_));
 }

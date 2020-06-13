@@ -6,16 +6,12 @@
 
 PositionMap::PositionMap() : map_(std::unordered_map<int, Position>()){}
 
-void PositionMap::Add(ID id, Position pos) {
+void PositionMap::Upsert(ID id, Position pos) {
     map_[id.GetValue()] = pos;
 }
 
 void PositionMap::Remove(ID id) {
     map_.erase(id.GetValue());
-}
-
-void PositionMap::Update(ID id, Position pos) {
-    map_[id.GetValue()] = pos;
 }
 
 bool PositionMap::CheckIfExists(ID id) {
@@ -27,5 +23,5 @@ Position PositionMap::Get(ID id) {
 }
 
 void PositionMap::Emplace(ID id, int x, int y) {
-    Add(id, Position(x, y));
+    Upsert(id, Position(x, y));
 }

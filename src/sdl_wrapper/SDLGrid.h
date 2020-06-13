@@ -21,7 +21,7 @@ public:
     Rectangle Get(int x, int y);
     std::vector<Rectangle> GetRow(int y);
     void Reset();
-    void Upsert(Rectangle &rect);
+    void Upsert(Rectangle rect);
     int GetHeight();
     int GetWidth();
 private:
