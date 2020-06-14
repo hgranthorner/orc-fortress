@@ -9,12 +9,13 @@
 #include <gtest/gtest.h>
 #include <models/Orc.h>
 
-class OrcTest : testing::Test {
+class OrcTest : public testing::Test {
 protected:
     void SetUp() override;
 
-    Orc orc_;
+    Orc orc_ = Orc(Colors::RED);
     std::vector<Prey> prey_;
+    Targeter targeter_;
 };
 
 

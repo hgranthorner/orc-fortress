@@ -7,17 +7,23 @@
 
 #include <type_traits>
 #include <vector>
-#include "Orc.h"
+
+template<typename T>
+struct Target
+{
+public:
+    Target(int index, T target) : index(index), value(target) {}
+
+    int index;
+    T value;
+};
 
 class Targeter {
 public:
     Targeter();
 
     template<typename TSubject, typename TTarget>
-    TTarget FindClosest(TSubject subjectGeneric, std::vector<TTarget> targets) const;
+    Target<TTarget> FindClosest(TSubject subject, std::vector<TTarget> targets) const;
 };
-
-
-
 
 #endif //ORC_FORTRESS_TARGETER_H

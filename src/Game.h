@@ -17,6 +17,7 @@ public:
 
 private:
     SDLWrapper sdl_wrapper_;
+    Targeter targeter_;
     bool is_running_ = true;
     std::string game_name_ = "Orc Fortress";
 

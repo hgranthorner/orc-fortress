@@ -37,6 +37,7 @@ void Game::RunGameLoop() {
     }
 
     for (auto &orc:orcs_) {
+        orc.Act(targeter_, prey_);
         sdl_wrapper_.DrawRectangle(orc);
     }
 

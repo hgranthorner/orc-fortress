@@ -8,11 +8,12 @@
 #include <vector>
 #include <Rectangle.h>
 #include "Prey.h"
+#include "Targeter.h"
 
 class Orc : public Rectangle {
 public:
     explicit Orc(Color color, int x = 30, int y = 30);
-    void Act(std::vector<Prey> &prey) const;
+    void Act(Targeter targeter, std::vector<Prey> &prey);
 private:
     bool is_hungry_ = true;
 };

@@ -3,8 +3,11 @@
 //
 
 #include <utils/Position.h>
-#include "TargeterTest.h"
 #include <gtest/gtest.h>
+#include <sdl_wrapper/Rectangle.h>
+#include <models/Orc.h>
+#include <models/Prey.h>
+#include "TargeterTest.h"
 
 TEST_F(TargeterTest, WorksAtAll) {
     auto pos = Position(1,1);
@@ -13,8 +16,8 @@ TEST_F(TargeterTest, WorksAtAll) {
     poss.emplace_back(5, 5);
     poss.emplace_back(5, 6);
     auto target = targeter_.FindClosest(pos, poss);
-    ASSERT_EQ(target.x,1);
-    ASSERT_EQ(target.y,2);
+    ASSERT_EQ(target.value.x,1);
+    ASSERT_EQ(target.value.y,2);
 }
 
 TEST_F(TargeterTest, WorksWithOrcsAndPrey) {
@@ -24,6 +27,12 @@ TEST_F(TargeterTest, WorksWithOrcsAndPrey) {
     prey.emplace_back(5, 5);
     prey.emplace_back(5, 6);
     auto target = targeter_.FindClosest(orc, prey);
-    ASSERT_EQ(target.x,1);
-    ASSERT_EQ(target.y,2);
+    ASSERT_EQ(target.value.x,1);
+    ASSERT_EQ(target.value.y,2);
+}
+
+TEST_F(TargeterTest, ThrowsOnEmptyTargets) {
+    auto orc = Orc(Colors::BLACK, 1,1);
+    std::vector<Prey> prey;
+    ASSERT_THROW(targeter_.FindClosest(orc, prey),std::invalid_argument);
 }
