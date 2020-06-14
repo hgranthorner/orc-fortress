@@ -5,8 +5,14 @@
 #include "Orc.h"
 #include "Consts.h"
 
-Orc::Orc(const Color color) : Rectangle(color,
-                                        30,
-                                        30,
-                                        Consts::ORC_LENGTH,
-                                        Consts::ORC_LENGTH) {}
+Orc::Orc(const Color color, int x, int y) : Rectangle(color,
+                                                      x,
+                                                      y,
+                                                      Consts::ORC_LENGTH,
+                                                      Consts::ORC_LENGTH) {}
+
+void Orc::Act(std::vector<Prey> &prey) const {
+    if (is_hungry_) {
+
+    }
+}

@@ -1,6 +1,7 @@
 add_library(Models
         Orc.cpp Orc.h
-        Prey.cpp Prey.h)
+        Prey.cpp Prey.h
+        Targeter.cpp Targeter.h)
 target_include_directories(Models
         PUBLIC ../sdl_wrapper
         PUBLIC ../consts

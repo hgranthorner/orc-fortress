@@ -10,7 +10,7 @@
 
 class Prey : public Rectangle {
 public:
-    Prey();
+    Prey(int x = -1, int y = -1);
 };
 
 

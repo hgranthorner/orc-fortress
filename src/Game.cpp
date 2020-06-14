@@ -2,6 +2,7 @@
 // Created by Grant Horner on 6/12/20.
 //
 
+#include <Targeter.h>
 #include "Game.h"
 #include "Rectangle.h"
 #include "Consts.h"
@@ -13,6 +14,8 @@ void Game::Run() {
 
     orcs_.emplace_back(Colors::RED);
     prey_.emplace_back();
+    auto targeter = Targeter();
+    targeter.FindClosest(Orc(Colors::RED), std::vector<Prey> {Prey(), Prey()});
 
     while (is_running_) RunGameLoop();
 }
